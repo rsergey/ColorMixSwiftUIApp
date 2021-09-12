@@ -11,7 +11,6 @@ struct ColorControlView: View {
     let color: Color
     
     @Binding var sliderValue: Double
-    @State private var text = ""
     @State private var currentValue: Double = 0
     @State private var alertPresented = false
     
@@ -20,29 +19,13 @@ struct ColorControlView: View {
             Text("\(lround(sliderValue))")
                 .foregroundColor(.white)
                 .frame(width: 35, alignment: .leading)
+            
             Slider(value: $sliderValue, in: 0...255, step: 1)
                 .accentColor(color)
-            
-            TextField("", text: $text) { (isEditing) in
-                if isEditing {
-                    text = ""
-                } else {
-                    checkForNumber()
-                }
-            }
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .multilineTextAlignment(.trailing)
-            .frame(width: 55)
-            .keyboardType(.numbersAndPunctuation)
-            .alert(isPresented: $alertPresented) {
-                Alert(title: Text("Wrong format!"),
-                      message: Text("Only numbers from 0 to 255. Try again."))
-            }
             
             TextField("", value: $sliderValue, formatter: NumberFormatter()) { (isEditing) in
                 if isEditing {
                     currentValue = sliderValue
-                    print(sliderValue)
                 } else {
                     if !(0...255).contains(sliderValue) {
                         sliderValue = currentValue
@@ -58,24 +41,8 @@ struct ColorControlView: View {
                 Alert(title: Text("Wrong format!"),
                       message: Text("Only numbers from 0 to 255. Try again."))
             }
-            
         }
         .padding(.horizontal)
-    }
-    
-    private func checkForNumber() {
-        guard let value = Double(text) else {
-            text = "\(lround(sliderValue))"
-            alertPresented.toggle()
-            return
-        }
-        if (0...255).contains(value) {
-            sliderValue = value
-            text = "\(lround(sliderValue))"
-        } else {
-            text = "\(lround(sliderValue))"
-            alertPresented.toggle()
-        }
     }
 }
 
