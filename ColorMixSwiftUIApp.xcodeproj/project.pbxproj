@@ -11,6 +11,7 @@
 		A530B18226EB432300420BE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A530B18126EB432300420BE1 /* ContentView.swift */; };
 		A530B18426EB432400420BE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A530B18326EB432400420BE1 /* Assets.xcassets */; };
 		A530B18726EB432400420BE1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A530B18626EB432400420BE1 /* Preview Assets.xcassets */; };
+		A530B19026EB475B00420BE1 /* ColorControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A530B18F26EB475B00420BE1 /* ColorControlView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		A530B18326EB432400420BE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A530B18626EB432400420BE1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A530B18826EB432400420BE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A530B18F26EB475B00420BE1 /* ColorControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorControlView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				A530B17F26EB432300420BE1 /* ColorMixSwiftUIAppApp.swift */,
 				A530B18126EB432300420BE1 /* ContentView.swift */,
+				A530B18F26EB475B00420BE1 /* ColorControlView.swift */,
 				A530B18326EB432400420BE1 /* Assets.xcassets */,
 				A530B18826EB432400420BE1 /* Info.plist */,
 				A530B18526EB432400420BE1 /* Preview Content */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A530B18226EB432300420BE1 /* ContentView.swift in Sources */,
+				A530B19026EB475B00420BE1 /* ColorControlView.swift in Sources */,
 				A530B18026EB432300420BE1 /* ColorMixSwiftUIAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
