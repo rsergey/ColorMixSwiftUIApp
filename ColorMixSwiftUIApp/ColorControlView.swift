@@ -11,8 +11,8 @@ struct ColorControlView: View {
     let color: Color
     
     @Binding var sliderValue: Double
-    
     @State private var text = ""
+    @State private var currentValue: Double = 0
     @State private var alertPresented = false
     
     var body: some View {
@@ -22,8 +22,9 @@ struct ColorControlView: View {
                 .frame(width: 35, alignment: .leading)
             Slider(value: $sliderValue, in: 0...255, step: 1)
                 .accentColor(color)
-            TextField("\(lround(sliderValue))", text: $text) { (editing) in
-                if editing {
+            
+            TextField("", text: $text) { (isEditing) in
+                if isEditing {
                     text = ""
                 } else {
                     checkForNumber()
@@ -37,6 +38,27 @@ struct ColorControlView: View {
                 Alert(title: Text("Wrong format!"),
                       message: Text("Only numbers from 0 to 255. Try again."))
             }
+            
+            TextField("", value: $sliderValue, formatter: NumberFormatter()) { (isEditing) in
+                if isEditing {
+                    currentValue = sliderValue
+                    print(sliderValue)
+                } else {
+                    if !(0...255).contains(sliderValue) {
+                        sliderValue = currentValue
+                        alertPresented.toggle()
+                    }
+                }
+            }
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .multilineTextAlignment(.trailing)
+            .frame(width: 55)
+            .keyboardType(.numbersAndPunctuation)
+            .alert(isPresented: $alertPresented) {
+                Alert(title: Text("Wrong format!"),
+                      message: Text("Only numbers from 0 to 255. Try again."))
+            }
+            
         }
         .padding(.horizontal)
     }
@@ -47,7 +69,7 @@ struct ColorControlView: View {
             alertPresented.toggle()
             return
         }
-        if value >= 0, value <= 255 {
+        if (0...255).contains(value) {
             sliderValue = value
             text = "\(lround(sliderValue))"
         } else {
